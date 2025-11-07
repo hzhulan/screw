@@ -35,6 +35,22 @@
             <distribution>repo,manual</distribution>
         </license>
     </licenses>
+
+    <distributionManagement>
+        <repository>
+            <!-- id 必须与 settings.xml 中 server 的 id 一致 -->
+            <id>nexus-releases</id>
+            <!-- Nexus 仓库的 Deployment URL -->
+            <url>http://server239:8081/repository/maven-releases/</url>
+        </repository>
+        <!-- 若需要上传快照版本，添加 snapshots 配置 -->
+        <snapshotRepository>
+            <id>nexus-snapshots</id> <!-- 快照仓库 ID，需在 settings.xml 中配置对应账号 -->
+            <url>http://server239:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
     <properties>
         <!--java 版本-->
         <java.version>1.8</java.version>
@@ -296,18 +312,7 @@
         <module>screw-maven-plugin</module>
         <module>screw-extension</module>
     </modules>
-    <distributionManagement>
-        <snapshotRepository>
-            <id>deploymentRepo</id>
-            <name>Nexus Snapshot Repository</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>deploymentRepo</id>
-            <name>Nexus Release Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
+
     <!--自定义mvn伺服设置 开始 -->
     <!--build-->
     <build>
